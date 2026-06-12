@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Angelic - Web Design & Signage</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Mitr:wght@300;400;500;600&family=Slackey&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+fontFamily: {
+mitr: ['Mitr', 'sans-serif'],
+fredoka: ['Fredoka', 'sans-serif'],
+slackey: ['Slackey', 'cursive'],
+},
+colors: {
+'cute-red': '#d91a1e',
+'cute-dark-red': '#c21417',
+'cute-cream': '#fff0f5', /* เปลี่ยนเป็นครีมอมชมพูม่วง */
+'cute-blue': '#a78bfa', /* เปลี่ยนเป็นสีม่วงพาสเทล */
+'cute-yellow': '#fce45e',
+'cute-black': '#181818',
+'cute-pink': '#ff9eb5', /* สีชมพู */
+'cute-green': '#f472b6' /* เปลี่ยนเป็นสีชมพูเข้ม/บานเย็น เพื่อคุมโทนม่วงชมพู */
+}
+}
+}
+}
+</script>
+<style>
+body {
+/* พื้นหลังลายทางปรับเป็นโทนม่วงพาสเทล */
+background: repeating-linear-gradient(
+to right,
+#c0a9ff,
+#c0a9ff 40px,
+#b399ff 40px,
+#b399ff 80px
+);
+margin: 0;
+padding: 15px;
+overflow-x: hidden;
+color: #181818;
+}
+/* กรอบหลักสีแดงด้านในคงไว้ตามโครงสร้างเดิม */
+.main-wrapper {
+background-color: #fff0f5;
+border: 8px solid #d91a1e;
+border-radius: 30px;
+position: relative;
+z-index: 10;
+}
+.cute-card {
+background-color: #ffffff;
+position: relative;
+overflow: hidden;
+border: 3px solid #181818;
+border-radius: 20px;
+height: 100%;
+}
+/* 3D Text Effects สไตล์น่ารัก */
+.text-3d-title {
+color: #fce45e;
+-webkit-text-stroke: 2px #181818;
+text-shadow: 4px 4px 0px #181818;
+letter-spacing: 2px;
+}
+.text-3d-subtitle {
+color: #ffffff;
+-webkit-text-stroke: 1px #181818;
+text-shadow: 2px 2px 0px #181818;
+}
+.text-3d-header {
+color: #a78bfa;
+-webkit-text-stroke: 1px #181818;
+text-shadow: 3px 3px 0px #181818;
+}
+/* Scoreboard style row - เปลี่ยนเป็นสไตล์ป้าย */
+.score-row {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 8px 16px;
+border-radius: 30px;
+margin-bottom: 10px;
+color: #181818;
+font-family: 'Mitr', sans-serif;
+font-weight: 500;
+border: 2px solid #181818;
+}
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #fff0f5; border-radius: 10px; }
+::-webkit-scrollbar-thumb { background: #d91a1e; border-radius: 10px; border: 2px solid #fff0f5; }
+/* Background Flowers */
+.flower-bg {
+position: absolute;
+opacity: 0.9;
+z-index: 0;
+animation: float-slow 4s ease-in-out infinite alternate;
+}
+@keyframes float-slow {
+0% { transform: translateY(0) rotate(0deg) scale(0.9); }
+100% { transform: translateY(-10px) rotate(10deg) scale(1.1); }
+}
+/* Floating Animation for decorations */
+.float-anim {
+animation: floating 3s ease-in-out infinite;
+}
+.float-anim-delayed {
+animation: floating 3s ease-in-out infinite 1.5s;
+}
+@keyframes floating {
+0% { transform: translateY(0px) rotate(0deg); }
+50% { transform: translateY(-6px) rotate(4deg); }
+100% { transform: translateY(0px) rotate(0deg); }
+}
+.btn-cute {
+background-color: #d91a1e;
+color: #ffffff;
+border: 3px solid #181818;
+transition: all 0.2s;
+}
+.btn-cute:hover {
+transform: translate(2px, 2px);
+}
+</style>
+</head>
+<body class="font-mitr antialiased relative">
+<div id="bg-decorations" class="absolute inset-0 pointer-events-none z-0 overflow-hidden w-full h-full"></div>
+<div class="main-wrapper max-w-6xl mx-auto p-4 md:p-8 mt-2 mb-8 shadow-2xl relative z-10">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 relative z-10">
+<div class="cute-card p-6 flex flex-col justify-center items-center text-center bg-cute-blue/10">
+<svg class="absolute top-4 left-4 w-12 h-12 float-anim z-0" viewBox="0 0 100 100">
+<path d="M40 50 Q 50 20 70 30" stroke="#4caf50" stroke-width="4" fill="none"/>
+<path d="M60 55 Q 60 20 70 30" stroke="#4caf50" stroke-width="4" fill="none"/>
+<circle cx="40" cy="55" r="15" fill="#d91a1e" stroke="#181818" stroke-width="3"/>
+<circle cx="60" cy="60" r="15" fill="#d91a1e" stroke="#181818" stroke-width="3"/>
+<path d="M35 50 Q 40 45 45 50" stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none"/>
+<path d="M55 55 Q 60 50 65 55" stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none"/>
+</svg>
+<svg class="absolute bottom-6 right-6 w-10 h-10 float-anim-delayed z-0" viewBox="0 0 100 100">
+<circle cx="30" cy="30" r="20" fill="#181818"/>
+<circle cx="70" cy="30" r="20" fill="#181818"/>
+<circle cx="30" cy="70" r="20" fill="#181818"/>
+<circle cx="70" cy="70" r="20" fill="#181818"/>
+<circle cx="50" cy="50" r="25" fill="#181818"/>
+<circle cx="50" cy="50" r="10" fill="#d91a1e"/>
+</svg>
+<div class="bg-cute-black text-cute-yellow px-4 py-1 rounded-full border-2 border-cute-black transform -rotate-2 mb-4 font-fredoka text-lg md:text-xl">ANGELIC SHOP</div>
+<h1 class="font-slackey text-4xl sm:text-5xl md:text-6xl text-3d-title leading-tight mb-2 z-10 transform -rotate-1 uppercase">ANGELIC</h1>
+<h2 class="font-fredoka text-lg sm:text-xl text-3d-subtitle mb-4 z-10 uppercase tracking-widest text-cute-red">Welcome to angelic shop</h2>
+<div class="z-10 bg-white p-3 rounded-xl border-2 border-cute-black w-full max-w-sm">
+<p class="text-sm leading-snug font-medium text-gray-800">
+รับทำป้ายและทำเว็บครบวงจร<br>ยินดีให้บริการลูกค้าทุกท่านค่ะ<br>
+<span class="text-cute-red font-bold text-lg inline-block mt-1 bg-cute-yellow px-2 rounded-md border border-cute-black">เปิดรับออเดอร์เยยค่า</span>
+</p>
+</div>
+<div class="mt-5 z-10">
+<div class="btn-cute font-fredoka px-8 py-2 rounded-full text-xl cursor-default uppercase">Start</div>
+</div>
+</div>
+<div class="cute-card p-6 flex flex-col justify-center relative bg-cute-pink/20">
+<svg class="absolute top-6 right-6 w-12 h-12 float-anim-delayed z-0" viewBox="0 0 100 100">
+<circle cx="50" cy="50" r="35" fill="#a78bfa" stroke="#181818" stroke-width="3"/>
+<path d="M30 30 Q 50 20 70 40 M20 50 Q 50 40 80 60 M30 70 Q 50 80 70 60" stroke="#181818" stroke-width="2" fill="none"/>
+<path d="M50 85 Q 40 100 20 90" stroke="#a78bfa" stroke-width="4" stroke-linecap="round" fill="none"/>
+<path d="M50 85 Q 40 100 20 90" stroke="#181818" stroke-width="2" stroke-linecap="round" fill="none"/>
+</svg>
+<div class="flex flex-col items-center mb-4 z-10 mt-2">
+<div class="bg-cute-yellow border-2 border-cute-black px-4 py-1 rounded-full transform rotate-2 mb-2">
+<span class="font-fredoka font-bold text-cute-black">SERVICES</span>
+</div>
+<h2 class="font-slackey text-2xl sm:text-3xl md:text-4xl text-3d-header leading-none text-center">OUR SERVICES</h2>
+</div>
+<div class="z-10 text-xs sm:text-sm space-y-2 bg-white p-4 rounded-xl border-2 border-cute-black">
+<p class="text-cute-red font-bold uppercase text-center mb-2 tracking-wide border-b-2 border-dashed border-cute-red pb-1">งานที่รับทำ</p>
+<ul class="list-none space-y-2 ml-2 font-medium">
+<li class="flex items-center"><span class="w-3 h-3 bg-cute-red rounded-full mr-3 border border-cute-black"></span> เว็บครบวงจร</li>
+<li class="flex items-center"><span class="w-3 h-3 bg-cute-blue rounded-full mr-3 border border-cute-black"></span> ทำป้าย (เป็นตัวแทนนะคะ)</li>
+<li class="flex items-center"><span class="w-3 h-3 bg-cute-yellow rounded-full mr-3 border border-cute-black"></span> ลายน้ำ (เป็นตัวแทนนะคะ)</li>
+<li class="flex items-center"><span class="w-3 h-3 bg-cute-green rounded-full mr-3 border border-cute-black"></span> สอบถามรายละเอียดเพิ่มเติมได้เลยค่ะ</li>
+</ul>
+<div class="mt-4 bg-cute-cream text-center p-2 rounded-lg border border-cute-black text-xs font-bold">
+สนใจงานชิ้นไหนทักสอบถามรายละเอียดได้เลยค่ะ ยินดีให้บริการค่า
+</div>
+</div>
+</div>
+<div class="cute-card p-6 flex flex-col items-center justify-center text-center bg-cute-green/20">
+<h2 class="font-slackey text-2xl sm:text-3xl md:text-4xl text-3d-header mb-6 z-10 text-[#d91a1e]">CREDIT</h2>
+<div class="grid grid-cols-3 gap-3 w-full z-10 mb-5">
+<div onclick="openModal('bright')" class="bg-cute-yellow rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer transform transition hover:-translate-y-1 border-2 border-cute-black">
+<svg class="w-8 h-8 text-cute-red mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+</svg>
+<span class="font-fredoka text-cute-black font-bold text-xs leading-tight uppercase mt-1">Bright</span>
+</div>
+<div onclick="openModal('dark')" class="bg-cute-blue rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer transform transition hover:-translate-y-1 border-2 border-cute-black">
+<svg class="w-8 h-8 text-white mb-1" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+<span class="font-fredoka text-white font-bold text-xs leading-tight uppercase mt-1">Dark</span>
+</div>
+<div onclick="openModal('pastel')" class="bg-cute-pink rounded-xl p-3 flex flex-col items-center justify-center cursor-pointer transform transition hover:-translate-y-1 border-2 border-cute-black">
+<svg class="w-8 h-8 text-cute-black mb-1" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+<span class="font-fredoka text-cute-black font-bold text-xs leading-tight uppercase mt-1">Pastel</span>
+</div>
+</div>
+<a href="https://www.facebook.com/share/17jexKrBnN/" target="_blank" class="bg-cute-black text-cute-yellow font-fredoka px-6 py-2 rounded-full text-sm border-2 border-cute-black inline-block hover:scale-105 transition-all">⭐️ เครดิตร้าน คลิกเลย ⭐️</a>
+</div>
+<div class="cute-card p-6 flex flex-col items-center justify-center bg-cute-yellow/10">
+<div class="bg-cute-red text-white font-slackey px-4 py-2 rounded-t-xl border-t-2 border-l-2 border-r-2 border-cute-black -mb-1 z-20 tracking-widest text-base sm:text-lg">SCHEDULE</div>
+<div class="w-full bg-white border-2 border-cute-black rounded-xl p-4 z-10">
+<div class="w-full space-y-2.5 text-[10px] sm:text-xs md:text-sm">
+<div class="score-row bg-cute-green">
+<span class="pr-2">ระยะเวลาทำงานปกติ (งานป้าย)</span>
+<span class="text-cute-black bg-white px-2 sm:px-3 py-1 rounded-full border border-cute-black font-bold whitespace-nowrap">2-3 วัน</span>
+</div>
+<div class="score-row bg-cute-blue">
+<span class="pr-2">ระยะเวลาทำงานปกติ (งานเว็บ)</span>
+<span class="text-cute-black bg-white px-2 sm:px-3 py-1 rounded-full border border-cute-black font-bold whitespace-nowrap">1-2 อาทิตย์</span>
+</div>
+<div class="score-row bg-cute-pink">
+<span class="pr-2">งานเร่งด่วนพิเศษ</span>
+<span class="text-cute-black bg-white px-2 sm:px-3 py-1 rounded-full border border-cute-black font-bold whitespace-nowrap">+ 15.-</span>
+</div>
+<div class="score-row bg-cute-yellow">
+<span class="pr-2">งานเร่งด่วน + ลัดคิวทองคำ</span>
+<span class="text-cute-black bg-white px-2 sm:px-3 py-1 rounded-full border border-cute-black font-bold whitespace-nowrap">+ 30.-</span>
+</div>
+</div>
+<div class="text-center mt-3 pt-3 border-t-2 border-dashed border-cute-red">
+<span class="inline-block bg-cute-red text-white text-[10px] sm:text-xs border-2 border-cute-black px-3 py-1 rounded-full">งดนำผลงานท่านอื่นมาให้ร้านทำตามทุกกรณี!</span>
+</div>
+</div>
+</div>
+<div class="cute-card p-6 md:col-span-2 bg-cute-blue/10">
+<h2 class="font-slackey text-2xl sm:text-3xl text-3d-header mb-4 z-10 uppercase text-center text-[#d91a1e]">Conditions & Agreement</h2>
+<div class="z-10 grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-white p-4 rounded-xl border-2 border-cute-black">
+<h3 class="font-fredoka text-cute-red tracking-wider mb-2 text-lg border-b-2 border-cute-red inline-block">AGREEMENT</h3>
+<ul class="list-none text-gray-800 space-y-2 text-sm mt-2 font-medium">
+<li class="flex items-start"><svg class="w-4 h-4 mr-2 shrink-0 mt-1" viewBox="0 0 100 100"><path d="M50 10 Q 40 40 25 60" stroke="#4caf50" stroke-width="8" fill="none"/><path d="M50 10 Q 60 40 75 60" stroke="#4caf50" stroke-width="8" fill="none"/><circle cx="25" cy="70" r="20" fill="#d91a1e" stroke="#181818" stroke-width="6"/><circle cx="75" cy="70" r="20" fill="#d91a1e" stroke="#181818" stroke-width="6"/></svg> โอนเงินแล้วไม่คืนทุกกรณี เว้นแต่ทางร้านเป็นฝ่ายผิด</li>
+<li class="flex items-start"><svg class="w-4 h-4 mr-2 shrink-0 mt-1" viewBox="0 0 100 100"><path d="M50 10 Q 40 40 25 60" stroke="#4caf50" stroke-width="8" fill="none"/><path d="M50 10 Q 60 40 75 60" stroke="#4caf50" stroke-width="8" fill="none"/><circle cx="25" cy="70" r="20" fill="#d91a1e" stroke="#181818" stroke-width="6"/><circle cx="75" cy="70" r="20" fill="#d91a1e" stroke="#181818" stroke-width="6"/></svg> ส่งงานให้เช็คเรียบร้อยแล้ว หากมาแก้ไขหลังจากนั้น <span class="text-cute-red font-bold">คิดค่าแก้เพิ่มนะคะ</span></li>
+</ul>
+<p class="text-xs text-gray-500 mt-3 font-medium">* โปรดอ่านเงื่อนไขและรายละเอียดก่อนสั่งซื้อเพื่อความเข้าใจที่ตรงกันนะคะ</p>
+</div>
+<div class="bg-cute-cream p-4 rounded-xl border-2 border-cute-black relative overflow-hidden">
+<svg class="absolute -right-4 -top-4 w-20 h-20 opacity-20" viewBox="0 0 100 100">
+<circle cx="30" cy="30" r="20" fill="#d91a1e"/><circle cx="70" cy="30" r="20" fill="#d91a1e"/><circle cx="30" cy="70" r="20" fill="#d91a1e"/><circle cx="70" cy="70" r="20" fill="#d91a1e"/><circle cx="50" cy="50" r="25" fill="#d91a1e"/>
+</svg>
+<h3 class="font-fredoka text-cute-blue tracking-wider mb-2 text-lg border-b-2 border-cute-blue inline-block relative z-10">ANGELIC SHOP</h3>
+<div class="text-gray-800 text-sm space-y-1 relative z-10 font-medium">
+<p class="font-bold text-cute-red text-base mb-2 bg-white inline-block px-2 py-1 rounded-md border border-cute-black transform -rotate-1">𓈒ׅ♡༷🪽𐄙ׅᄌཾ plus one for me 𐄙ּּ֯֯♡</p>
+<p>ยินดีต้อนรับลูกค้าที่น่ารักทุกคนค่ะ ทางร้านใส่ใจรายละเอียดทุกชิ้นงาน สามารถทักมาคุยสอบถามคิวงานหรือรายละเอียดการออกแบบก่อนได้เลยน้าาา</p>
+</div>
+</div>
+</div>
+</div>
+<div class="cute-card p-6 bg-white">
+<h2 class="font-slackey text-xl sm:text-2xl text-3d-header mb-4 z-10 uppercase text-center text-[#fce45e] drop-shadow-md" style="color: #fce45e; -webkit-text-stroke: 1.5px #181818;">How to Order</h2>
+<div class="space-y-4">
+<div class="bg-cute-cream border-2 border-cute-black rounded-xl p-3">
+<h3 class="bg-cute-pink text-cute-black px-2 py-0.5 rounded-md border border-cute-black inline-block font-bold text-sm mb-2 transform -rotate-1">ขั้นตอนการสั่งซื้อ</h3>
+<ul class="text-gray-800 space-y-1.5 text-xs font-medium list-none pl-1">
+<li class="flex items-start"><svg class="w-3.5 h-3.5 mr-1.5 shrink-0 mt-0.5" viewBox="0 0 100 100"><path d="M50 10 Q 40 40 25 60" stroke="#4caf50" stroke-width="8" fill="none"/><path d="M50 10 Q 60 40 75 60" stroke="#4caf50" stroke-width="8" fill="none"/><circle cx="25" cy="70" r="20" fill="#d91a1e" stroke="#181818" stroke-width="6"/><circle cx="75" cy="70" r="20" fill="#d91a1e" stroke="#181818" stroke-width="6"/></svg> 1. เขียนรายละเอียดร้านค้าที่ต้องการให้ครบถ้วน</li>
+<li class="flex items-start"><svg class="w-3.5 h-3.5 mr-1.5 shrink-0 mt-0.5" viewBox="0 0 100 100"><path d="M50 10 Q 40 40 25 60" stroke="#4caf50" stroke-width="8" fill="none"/><path d="M50 10 Q 60 40 75 60" stroke="#4caf50" stroke-width="8" fill="none"/><circle cx="25" cy="70" r="20" fill="#d91a1e" stroke="#181818" stroke-width="6"/><circle cx="75" cy="70" r="20" fill="#d91a1e" stroke="#181818" stroke-width="6"/></svg> 2. ใส่ลิงก์ตัวอย่างงานมาให้พร้อม หากมีโลโก้ให้แนบมาด้วยค่ะ</li>
+<li class="flex items-start"><svg class="w-3.5 h-3.5 mr-1.5 shrink-0 mt-0.5" viewBox="0 0 100 100"><path d="M50 10 Q 40 40 25 60" stroke="#4caf50" stroke-width="8" fill="none"/><path d="M50 10 Q 60 40 75 60" stroke="#4caf50" stroke-width="8" fill="none"/><circle cx="25" cy="70" r="20" fill="#d91a1e" stroke="#181818" stroke-width="6"/><circle cx="75" cy="70" r="20" fill="#d91a1e" stroke="#181818" stroke-width="6"/></svg> 3. ทางร้านส่งงานให้เช็ค แจ้งยอด และชำระเงิน</li>
+<li class="flex items-start"><svg class="w-3.5 h-3.5 mr-1.5 shrink-0 mt-0.5" viewBox="0 0 100 100"><path d="M50 10 Q 40 40 25 60" stroke="#4caf50" stroke-width="8" fill="none"/><path d="M50 10 Q 60 40 75 60" stroke="#4caf50" stroke-width="8" fill="none"/><circle cx="25" cy="70" r="20" fill="#d91a1e" stroke="#181818" stroke-width="6"/><circle cx="75" cy="70" r="20" fill="#d91a1e" stroke="#181818" stroke-width="6"/></svg> 4. นอนรอรับงานสวยๆ ได้เยยค่าาา</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cute-card p-6 flex flex-col justify-center bg-cute-yellow/20">
+<svg class="absolute top-4 right-4 w-10 h-10 float-anim z-0" viewBox="0 0 100 100">
+<path d="M40 50 Q 50 20 70 30" stroke="#4caf50" stroke-width="4" fill="none"/>
+<path d="M60 55 Q 60 20 70 30" stroke="#4caf50" stroke-width="4" fill="none"/>
+<circle cx="40" cy="55" r="15" fill="#d91a1e" stroke="#181818" stroke-width="3"/>
+<circle cx="60" cy="60" r="15" fill="#d91a1e" stroke="#181818" stroke-width="3"/>
+<path d="M35 50 Q 40 45 45 50" stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none"/>
+<path d="M55 55 Q 60 50 65 55" stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none"/>
+</svg>
+<h2 class="font-slackey text-xl sm:text-2xl text-3d-header mb-4 z-10 uppercase text-center text-[#57cccd]">Work Gallery</h2>
+<div class="z-10 space-y-4">
+<div class="bg-white p-4 rounded-xl border-2 border-cute-black relative">
+<div class="absolute -top-3 -left-2 bg-cute-yellow border-2 border-cute-black px-2 rounded-lg transform -rotate-6 font-bold text-xs">NEW!</div>
+<div class="flex justify-between items-center mt-1">
+<h3 class="font-fredoka font-bold text-cute-black text-lg">Angelic Store</h3>
+</div>
+<p class="text-sm text-gray-700 mt-2 mb-3 font-medium">รวมผลงานการออกแบบเว็บไซต์และการันตีคุณภาพจากทางร้าน</p>
+<div class="flex space-x-2">
+<a href="https://www.facebook.com/share/17jexKrBnN/" target="_blank" class="bg-cute-blue text-white font-fredoka text-xs px-3 py-1.5 rounded-full border-2 border-cute-black hover:translate-y-px transition">ดูเครดิตร้าน</a>
+</div>
+</div>
+</div>
+</div>
+<div class="cute-card p-4 sm:p-6 md:col-span-2 bg-cute-pink/10">
+<h2 class="font-slackey text-2xl sm:text-3xl md:text-4xl text-3d-title mb-6 z-10 uppercase text-center" style="color: #ff9eb5;">Design & Website</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5 w-full z-10">
+<div class="bg-white border-2 border-cute-black rounded-xl p-0 flex flex-col justify-between">
+<div class="bg-cute-blue border-b-2 border-cute-black py-2 px-3 text-center rounded-t-[18px]">
+<h3 class="text-lg font-bold text-white tracking-wide">ทำเว็บครบวงจร</h3>
+<p class="text-[10px] text-cute-black bg-white/70 inline-block px-2 rounded-full mt-1 font-bold">Full Website</p>
+</div>
+<div class="p-4">
+<ul class="text-xs text-gray-800 space-y-2 mb-4 list-none font-medium">
+<li class="flex items-start"><span class="text-cute-blue mr-2 font-bold">•</span> ออกแบบโครงสร้างเว็บ</li>
+<li class="flex items-start"><span class="text-cute-blue mr-2 font-bold">•</span> จัดวางเนื้อหาและปุ่มลิ้งก์</li>
+<li class="flex items-start"><span class="text-cute-blue mr-2 font-bold">•</span> ตกแต่งสไตล์น่ารักตามบรีฟ</li>
+</ul>
+</div>
+<div class="text-xs bg-cute-cream p-2 border-t-2 border-cute-black text-center font-bold rounded-b-[18px]">
+<span class="text-sm text-cute-red">สอบถามราคาทางแชทได้เลยค่า</span>
+</div>
+</div>
+<div class="bg-white border-2 border-cute-black rounded-xl p-0 flex flex-col justify-between relative">
+<div class="bg-cute-green border-b-2 border-cute-black py-2 px-3 text-center rounded-t-[18px]">
+<h3 class="text-lg font-bold text-cute-black tracking-wide">ทำป้ายร้านค้า</h3>
+<p class="text-[10px] text-cute-black bg-white/70 inline-block px-2 rounded-full mt-1 font-bold">Signage Design</p>
+</div>
+<div class="p-4">
+<ul class="text-xs text-gray-800 space-y-2 mb-4 list-none font-medium">
+<li class="flex items-start"><span class="text-cute-green mr-2 font-bold text-lg leading-none">•</span> ป้ายโปรโมชั่นต่างๆ</li>
+<li class="flex items-start"><span class="text-cute-green mr-2 font-bold text-lg leading-none">•</span> ตัวแทนออกแบบงานป้าย</li>
+<li class="flex items-start"><span class="text-cute-green mr-2 font-bold text-lg leading-none">•</span> งานสวย คมชัด สีสันสดใส</li>
+</ul>
+</div>
+<div class="text-xs bg-cute-cream p-2 border-t-2 border-cute-black text-center font-bold rounded-b-[18px]">
+<span class="text-sm text-cute-blue">เป็นตัวแทนราคาสุดน่ารัก</span>
+</div>
+</div>
+<div class="bg-white border-2 border-cute-black rounded-xl p-0 flex flex-col justify-between">
+<div class="bg-cute-pink border-b-2 border-cute-black py-2 px-3 text-center rounded-t-[18px]">
+<h3 class="text-lg font-bold text-cute-black tracking-wide">ออกแบบลายน้ำ</h3>
+<p class="text-[10px] text-cute-black bg-white/70 inline-block px-2 rounded-full mt-1 font-bold">Watermark</p>
+</div>
+<div class="p-4">
+<ul class="text-xs text-gray-800 space-y-2 mb-4 list-none font-medium">
+<li class="flex items-start"><span class="text-cute-pink mr-2 font-bold text-lg leading-none">•</span> ลายน้ำคาดภาพกันก๊อป</li>
+<li class="flex items-start"><span class="text-cute-pink mr-2 font-bold text-lg leading-none">•</span> เพิ่มความน่าเชื่อถือให้ร้าน</li>
+<li class="flex items-start"><span class="text-cute-pink mr-2 font-bold text-lg leading-none">•</span> ลายน่ารัก ตกแต่งไม่ซ้ำใคร</li>
+</ul>
+</div>
+<div class="text-xs bg-cute-cream p-2 border-t-2 border-cute-black text-center font-bold rounded-b-[18px]">
+<span class="text-sm text-cute-pink">ทักแชทสอบถามลายละเอียด</span>
+</div>
+</div>
+</div>
+</div>
+<div class="cute-card p-6 md:col-span-2 flex flex-col items-center justify-center text-center bg-cute-cream pb-10">
+<svg class="absolute top-8 left-8 w-16 h-16 float-anim z-0 transform -rotate-12" viewBox="0 0 100 100">
+<path d="M40 50 Q 50 20 70 30" stroke="#4caf50" stroke-width="4" fill="none"/>
+<path d="M60 55 Q 60 20 70 30" stroke="#4caf50" stroke-width="4" fill="none"/>
+<circle cx="40" cy="55" r="15" fill="#d91a1e" stroke="#181818" stroke-width="3"/>
+<circle cx="60" cy="60" r="15" fill="#d91a1e" stroke="#181818" stroke-width="3"/>
+<path d="M35 50 Q 40 45 45 50" stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none"/>
+<path d="M55 55 Q 60 50 65 55" stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none"/>
+</svg>
+<h2 class="font-slackey text-4xl sm:text-5xl md:text-6xl text-3d-title mb-2 z-10 uppercase transform rotate-[-2deg]">Thank<br>You!</h2>
+<div class="bg-white border-2 border-cute-black px-4 py-1 rounded-full transform rotate-1 mb-6 z-10">
+<p class="text-cute-black font-fredoka tracking-widest text-xs font-bold">PREPARED BY ANGELIC SHOP</p>
+</div>
+<div class="flex space-x-4 sm:space-x-5 z-10 mt-2 items-center justify-center relative">
+<a href="https://www.facebook.com/share/1WXLvo8EEn/" target="_blank" class="flex items-center justify-center w-14 h-14 bg-cute-blue border-[3px] border-cute-black rounded-[18px] text-white hover:-translate-y-1 transition">
+<svg class="w-8 h-8" viewBox="0 0 24 24">
+<circle cx="12" cy="12" r="10.5" fill="white" />
+<path d="M14 9h-2v-2c0-.55.45-1 1-1h1V4h-2c-2.21 0-4 1.79-4 4v1H6v3h2v8h3v-8h2.5L14 9z" fill="#a78bfa"/>
+</svg>
+</a>
+<a href="https://line.me/ti/p/d6PnSu6drh" target="_blank" class="flex items-center justify-center w-14 h-14 bg-cute-green border-[3px] border-cute-black rounded-[18px] text-cute-black hover:-translate-y-1 transition">
+<svg class="w-8 h-8 text-cute-black" viewBox="0 0 24 24" fill="currentColor">
+<path d="M12 4C6.48 4 2 8.03 2 13c0 2.72 1.34 5.17 3.46 6.83-.34 1.58-.98 3.12-1.25 3.69-.07.16-.01.35.13.44.13.09.3.08.43-.01 1.76-1.12 3.49-1.92 4.49-2.28 1.48.51 3.09.8 4.74.8 5.52 0 10-4.03 10-9s-4.48-9-10-9z"/>
+</svg>
+</a>
+<div class="relative">
+<a href="https://www.facebook.com/share/17jexKrBnN/" target="_blank" class="relative z-10 flex items-center justify-center w-14 h-14 bg-cute-pink border-[3px] border-cute-black rounded-[18px] text-cute-black hover:-translate-y-1 transition">
+<svg class="w-8 h-8 text-cute-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+</svg>
+</a>
+<svg class="absolute -right-8 -bottom-3 w-16 h-16 pointer-events-none z-0 transform rotate-12" viewBox="0 0 100 100">
+<path d="M40 50 Q 50 20 70 30" stroke="#4caf50" stroke-width="4" fill="none"/>
+<path d="M60 55 Q 60 20 70 30" stroke="#4caf50" stroke-width="4" fill="none"/>
+<circle cx="40" cy="55" r="16" fill="#d91a1e" stroke="#181818" stroke-width="4"/>
+<circle cx="65" cy="65" r="16" fill="#d91a1e" stroke="#181818" stroke-width="4"/>
+<path d="M34 49 Q 39 44 44 49" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none"/>
+<path d="M59 59 Q 64 54 69 59" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="portfolioModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 opacity-0 transition-opacity duration-300 backdrop-blur-sm">
+<div class="bg-cute-cream border-4 border-cute-black rounded-2xl p-6 relative w-full max-w-md transform scale-95 transition-transform duration-300">
+<button onclick="closeModal()" class="absolute -top-4 -right-4 bg-cute-red text-white w-10 h-10 rounded-full border-2 border-cute-black font-fredoka text-xl flex items-center justify-center hover:bg-red-600 hover:translate-y-px transition">X</button>
+<h3 id="modalTitle" class="font-slackey text-2xl sm:text-3xl mb-4 text-center uppercase tracking-wide text-cute-black font-bold"></h3>
+<div id="modalContent" class="space-y-3 max-h-[60vh] overflow-y-auto pr-2"></div>
+</div>
+</div>
+<script>
+const portfolioData = {
+bright: { title: 'Credit V.1', links: [{ name: 'ดูเครดิตร้านบน Facebook', url: 'https://www.facebook.com/share/17jexKrBnN/' }] },
+dark: { title: 'Credit V.2', links: [{ name: 'ดูเครดิตร้านบน Facebook', url: 'https://www.facebook.com/share/17jexKrBnN/' }] },
+pastel: { title: 'Credit V.3', links: [{ name: 'ดูเครดิตร้านบน Facebook', url: 'https://www.facebook.com/share/17jexKrBnN/' }] }
+};
+const modal = document.getElementById('portfolioModal');
+const modalInner = modal.querySelector('div');
+function openModal(category) {
+const data = portfolioData[category];
+document.getElementById('modalTitle').innerText = data.title;
+const contentDiv = document.getElementById('modalContent');
+contentDiv.innerHTML = '';
+const colors = ['bg-cute-blue', 'bg-cute-pink', 'bg-cute-green', 'bg-cute-yellow text-cute-black'];
+data.links.forEach((link, index) => {
+const colorClass = colors[index % colors.length];
+const textClass = colorClass.includes('text-') ? '' : 'text-white';
+const a = document.createElement('a');
+a.href = link.url;
+a.target = '_blank';
+a.className = `block w-full text-center py-3 rounded-xl border-2 border-cute-black font-bold text-sm transition hover:-translate-y-1 ${colorClass} ${textClass} mb-3`;
+a.innerHTML = link.name;
+contentDiv.appendChild(a);
+});
+modal.classList.remove('hidden');
+setTimeout(() => {
+modal.classList.remove('opacity-0');
+modalInner.classList.remove('scale-95');
+}, 10);
+}
+function closeModal() {
+modal.classList.add('opacity-0');
+modalInner.classList.add('scale-95');
+setTimeout(() => modal.classList.add('hidden'), 300);
+}
+modal.addEventListener('click', (e) => {
+if (e.target === modal) closeModal();
+});
+// Generate Cute Flowers/Shapes Background for the entire page
+const bgContainer = document.getElementById('bg-decorations');
+const shapes = [
+`<path d="M12 2 C16 2 18 6 15 10 C19 9 22 12 20 15 C22 19 19 22 15 20 C18 24 14 26 12 22 C10 26 6 24 9 20 C5 22 2 19 4 15 C2 12 5 9 9 10 C6 6 8 2 12 2 Z" />`,
+`<path d="M12 12 Q 14 6 20 8 M 16 16 Q 14 6 20 8" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="12" cy="16" r="4"/><circle cx="16" cy="18" r="4"/>`,
+`<circle cx="12" cy="12" r="6"/>`
+];
+const patternColors = ['#181818', '#ffffff', '#fce45e', '#d91a1e'];
+const rows = 15;
+const cols = 5;
+for(let r=0; r<rows; r++) {
+for(let c=0; c<cols; c++) {
+if(Math.random() > 0.85) continue;
+const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+svg.setAttribute('class', 'flower-bg');
+svg.setAttribute('viewBox', '0 0 24 24');
+const size = Math.random() * 20 + 15;
+const top = (r * (100 / rows)) + (Math.random() * (100 / rows));
+const left = (c * (100 / cols)) + (Math.random() * (100 / cols));
+const color = patternColors[Math.floor(Math.random() * patternColors.length)];
+const shape = shapes[Math.floor(Math.random() * shapes.length)];
+const delay = Math.random() * 4;
+svg.style.width = `${size}px`;
+svg.style.height = `${size}px`;
+svg.style.top = `${top}%`;
+svg.style.left = `${left}%`;
+svg.style.fill = color;
+if(shape.includes('stroke')) svg.style.color = color;
+svg.style.animationDelay = `${delay}s`;
+svg.innerHTML = shape;
+bgContainer.appendChild(svg);
+}
+}
+</script>
+</body>
+</html>
